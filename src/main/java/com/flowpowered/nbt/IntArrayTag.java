@@ -1,7 +1,7 @@
 /*
  * This file is part of Flow NBT, licensed under the MIT License (MIT).
  *
- * Copyright (c) 2011 Flow Powered <https://flowpowered.com/>
+ * Copyright (c) 2011 DivineCraft <https://divinecraft.ru/>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -25,7 +25,7 @@ package com.flowpowered.nbt;
 
 import java.util.Arrays;
 
-public class IntArrayTag extends Tag<int[]> {
+public final class IntArrayTag extends Tag<int[]> {
     /**
      * The value.
      */
@@ -82,14 +82,14 @@ public class IntArrayTag extends Tag<int[]> {
         return Arrays.equals(value, tag.value) && getName().equals(tag.getName());
     }
 
-    private int[] cloneArray(int[] intArray) {
+    private static int[] cloneArray(int[] intArray) {
         if (intArray == null) {
             return null;
         } else {
             int length = intArray.length;
-            byte[] newArray = new byte[length];
+            int[] newArray = new int[length];
             System.arraycopy(intArray, 0, newArray, 0, length);
-            return intArray;
+            return newArray;
         }
     }
 }

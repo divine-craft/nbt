@@ -1,7 +1,7 @@
 /*
  * This file is part of Flow NBT, licensed under the MIT License (MIT).
  *
- * Copyright (c) 2011 Flow Powered <https://flowpowered.com/>
+ * Copyright (c) 2011 DivineCraft <https://divinecraft.ru/>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -30,7 +30,7 @@ import java.util.List;
 /**
  * The {@code TAG_List} tag.
  */
-public class ListTag<T extends Tag<?>> extends Tag<List<T>> {
+public final class ListTag<T extends Tag<?>> extends Tag<List<T>> {
     /**
      * The type of entries within this list.
      */

@@ -1,7 +1,7 @@
 /*
  * This file is part of Flow NBT, licensed under the MIT License (MIT).
  *
- * Copyright (c) 2011 Flow Powered <https://flowpowered.com/>
+ * Copyright (c) 2011 DivineCraft <https://divinecraft.ru/>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -24,6 +24,7 @@
 package com.flowpowered.nbt;
 
 import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 /**
  * A class which holds constant values.
@@ -32,7 +33,7 @@ public final class NBTConstants {
     /**
      * The character set used by NBT (UTF-8).
      */
-    public static final Charset CHARSET = Charset.forName("UTF-8");
+    public static final Charset CHARSET = StandardCharsets.UTF_8;
     /**
      * Tag type constants.
      */
@@ -49,7 +50,7 @@ public final class NBTConstants {
             TYPE_LIST = TagType.TAG_LIST.getId(),
             TYPE_COMPOUND = TagType.TAG_COMPOUND.getId(),
             TYPE_INT_ARRAY = TagType.TAG_INT_ARRAY.getId(),
-            TYPE_SHORT_ARRAY = TagType.TAG_SHORT_ARRAY.getId();
+            TYPE_LONG_ARRAY = TagType.TAG_LONG_ARRAY.getId();
 
     /**
      * Default private constructor.

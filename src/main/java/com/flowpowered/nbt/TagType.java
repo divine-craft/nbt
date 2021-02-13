@@ -1,7 +1,7 @@
 /*
  * This file is part of Flow NBT, licensed under the MIT License (MIT).
  *
- * Copyright (c) 2011 Flow Powered <https://flowpowered.com/>
+ * Copyright (c) 2011 DivineCraft <https://divinecraft.ru/>
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -40,7 +40,7 @@ public enum TagType {
     // Java generics, y u so suck
     TAG_COMPOUND(CompoundTag.class, "TAG_Compound", 10),
     TAG_INT_ARRAY(IntArrayTag.class, "TAG_Int_Array", 11),
-    TAG_SHORT_ARRAY(ShortArrayTag.class, "TAG_Short_Array", 100),;
+    TAG_LONG_ARRAY(LongArrayTag.class, "TAG_Long_Array", 12);
     private static final Map<Class<? extends Tag<?>>, TagType> BY_CLASS = new HashMap<Class<? extends Tag<?>>, TagType>();
     private static final Map<String, TagType> BY_NAME = new HashMap<String, TagType>();
     private static final TagType[] BY_ID;

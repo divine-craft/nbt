@@ -1,23 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <!-- Project information -->
     <name>Flow NBT</name>
-    <groupId>com.flowpowered</groupId>
+    <groupId>ru.divinecraft</groupId>
     <artifactId>flow-nbt</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <version>1.0.2-SNAPSHOT</version>
     <packaging>jar</packaging>
     <inceptionYear>2011</inceptionYear>
     <url>https://flowpowered.com/nbt</url>
     <description>Named Binary Tag (NBT) library for Java based on Graham Edgecombe's JNBT library.</description>
-
-    <!-- Parent information -->
-    <parent>
-        <groupId>org.sonatype.oss</groupId>
-        <artifactId>oss-parent</artifactId>
-        <version>9</version>
-    </parent>
 
     <!-- Build properties -->
     <properties>
@@ -27,7 +21,23 @@
         <commit>unknown</commit>
         <additionalparam>-Xdoclint:none</additionalparam>
         <mainClass>${project.groupId}.nbt.gui.NBTViewer</mainClass>
+        <!-- GitHub -->
+        <github.owner>divine-craft</github.owner>
+        <github.repository>nbt</github.repository>
+        <github.coordinate>${github.owner}/${github.repository}</github.coordinate>
+        <github.url>https://github.com/${github.coordinate}</github.url>
     </properties>
+
+    <distributionManagement>
+        <repository>
+            <id>sonatype-ossrh</id>
+            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
+        </repository>
+        <snapshotRepository>
+            <id>sonatype-ossrh</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
 
     <!-- License information -->
     <licenses>
@@ -40,8 +50,8 @@
 
     <!-- Organization information -->
     <organization>
-        <name>Flow Powered</name>
-        <url>https://flowpowered.com</url>
+        <name>DivineCraft</name>
+        <url>https://divinecraft.ru</url>
     </organization>
 
     <!-- Project developers -->
@@ -66,25 +76,33 @@
             <name>Luke Spragg</name>
             <email>the@wulf.im</email>
         </developer>
+        <developer>
+            <id>PROgrm_JARvis</id>
+            <name>Petr Portnov</name>
+            <email>me@progrm-jarvis.ru</email>
+            <timezone>3</timezone>
+            <organization>DivineCraft</organization>
+            <organizationUrl>https://divinecraft.ru/</organizationUrl>
+        </developer>
     </developers>
 
     <!-- Source code access -->
     <scm>
-        <connection>scm:git:git://github.com/flow/nbt.git</connection>
-        <developerConnection>scm:git:git@github.com:flow/nbt.git</developerConnection>
-        <url>https://github.com/flow/nbt</url>
+        <connection>scm:git:git://github.com/${github.coordinate}.git</connection>
+        <developerConnection>scm:git:git@github.com:${github.coordinate}.git</developerConnection>
+        <url>${github.url}</url>
     </scm>
 
     <!-- Continuous integration -->
     <ciManagement>
-        <system>travis</system>
-        <url>https://travis-ci.org/flow/nbt</url>
+        <system>github-actions</system>
+        <url>${github.url}/actions</url>
     </ciManagement>
 
     <!-- Issue management -->
     <issueManagement>
         <system>github</system>
-        <url>https://github.com/flow/nbt/issues</url>
+        <url>${github.url}/issues</url>
     </issueManagement>
 
     <!-- Project dependencies -->
@@ -158,42 +176,16 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.3</version>
+                <version>3.8.1</version>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
+                    <source>8</source>
+                    <target>8</target>
                     <compilerArguments>
                         <O>-Xlint:all</O>
                         <O>-Xlint:-path</O>
                     </compilerArguments>
                     <showWarnings>true</showWarnings>
                     <showDeprecation>true</showDeprecation>
-                </configuration>
-            </plugin>
-            <!-- JAR creation plugin -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>2.6</version>
-                <configuration>
-                    <archive>
-                        <manifestEntries>
-                            <Specification-Title>${project.name}</Specification-Title>
-                            <Specification-Version>${project.version}+${ciSystem}-b${buildNumber}.git-${commit}</Specification-Version>
-                            <Specification-Vendor>${project.organization.name} - ${project.organization.url}</Specification-Vendor>
-                            <Main-Class>${mainClass}</Main-Class>
-                        </manifestEntries>
-                    </archive>
-                </configuration>
-            </plugin>
-            <!-- Javadoc creation plugin -->
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.10.3</version>
-                <configuration>
-                    <author>false</author>
-                    <version>false</version>
                 </configuration>
             </plugin>
             <!-- Coveralls reporting plugin  -->
@@ -208,6 +200,7 @@
                 <artifactId>cobertura-maven-plugin</artifactId>
                 <version>2.7</version>
                 <configuration>
+                    <check>true</check>
                     <format>xml</format>
                     <maxmem>256m</maxmem>
                 </configuration>
@@ -223,4 +216,81 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>build-extras</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-source-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>attach-sources</id>
+                                <goals>
+                                    <goal>jar-no-fork</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-javadoc-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>attach-javadocs</id>
+                                <goals>
+                                    <goal>jar</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>sign-artifacts</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-gpg-plugin</artifactId>
+                        <executions>
+                            <execution>
+                                <id>sign-artifacts</id>
+                                <phase>verify</phase>
+                                <goals>
+                                    <goal>sign</goal>
+                                </goals>
+                                <configuration>
+                                    <gpgArguments>
+                                        <arg>--pinentry-mode</arg>
+                                        <arg>loopback</arg>
+                                    </gpgArguments>
+                                </configuration>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+        <profile>
+            <id>sonatype-ossrh-deployment-auto-release</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.sonatype.plugins</groupId>
+                        <artifactId>nexus-staging-maven-plugin</artifactId>
+                        <extensions>true</extensions>
+                        <configuration>
+                            <serverId>sonatype-ossrh</serverId>
+                            <nexusUrl>https://oss.sonatype.org/</nexusUrl>
+                            <autoReleaseAfterClose>true</autoReleaseAfterClose>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>
