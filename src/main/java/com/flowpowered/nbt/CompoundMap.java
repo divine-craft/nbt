@@ -65,7 +65,7 @@ public class CompoundMap implements Map<String, Tag<?>>, Iterable<Tag<?>> {
 
     /**
      * Creates a CompoundMap back by a LinkedHashMap, so insertion order is preserved.<br> <br> The map is initialised using the values given in the HashMap.  The constructor is included for backward
-     * compatibility, it is recommended to use the one that takes Map<String, Tag> instead.
+     * compatibility, it is recommended to use the one that takes {@code Map<String, Tag>} instead.
      *
      * @param initial the initial values for the CompoundMap
      */

@@ -80,7 +80,7 @@ public abstract class Tag<T> implements Comparable<Tag<?>> {
     public abstract T getValue();
 
     /**
-     * Clones a Map<String, Tag>
+     * Clones a {@code Map<String, Tag>}
      *
      * @param map the map
      * @return a clone of the map
