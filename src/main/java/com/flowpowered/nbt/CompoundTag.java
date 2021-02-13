@@ -26,7 +26,7 @@ package com.flowpowered.nbt;
 /**
  * The {@code TAG_Compound} tag.
  */
-public class CompoundTag extends Tag<CompoundMap> {
+public final class CompoundTag extends Tag<CompoundMap> {
     /**
      * The value.
      */
