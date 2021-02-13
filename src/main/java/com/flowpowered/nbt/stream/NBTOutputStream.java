@@ -33,8 +33,9 @@ import java.util.zip.GZIPOutputStream;
 import com.flowpowered.nbt.*;
 
 /**
- * This class writes NBT, or Named Binary Tag, {@link Tag} objects to an underlying {@link OutputStream}. <p /> The NBT format was created by Markus Persson, and the specification may be found
- * at <a href="https://flowpowered.com/nbt/spec.txt"> https://flowpowered.com/nbt/spec.txt</a>.
+ * This class writes NBT, or Named Binary Tag, {@link Tag} objects to an underlying {@link OutputStream}.
+ * <p>The NBT format was created by Markus Persson, and the specification may be found
+ * at <a href="https://flowpowered.com/nbt/spec.txt"> https://flowpowered.com/nbt/spec.txt</a>.</p>
  */
 public final class NBTOutputStream implements Closeable {
     /**
