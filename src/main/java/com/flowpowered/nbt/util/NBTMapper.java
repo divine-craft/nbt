@@ -48,6 +48,7 @@ public class NBTMapper {
      *
      * @param t Tag to get the value from
      * @param clazz the return type to use
+     * @param <T> type of the value
      * @return the value as an onbject of the same type as the given class
      */
     public static <T> T getTagValue(Tag<?> t, Class<? extends T> clazz) {
@@ -66,7 +67,10 @@ public class NBTMapper {
      * Takes in an NBT tag, sanely checks null status, and then returns it value. This method will return null if the value cannot be cast to the default value.
      *
      * @param t Tag to get the value from
+     * @param clazz the return type to use
      * @param defaultValue the value to return if the tag or its value is null or the value cannot be cast
+     * @param <T> type of the value
+     * @param <U> type of default value
      * @return the value as an onbject of the same type as the default value, or the default value
      */
     public static <T, U extends T> T toTagValue(Tag<?> t, Class<? extends T> clazz, U defaultValue) {

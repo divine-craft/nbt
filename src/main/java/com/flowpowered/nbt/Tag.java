@@ -39,6 +39,8 @@ public abstract class Tag<T> implements Comparable<Tag<?>> {
 
     /**
      * Creates the tag with no name.
+     *
+     * @param type type of the tag
      */
     public Tag(TagType type) {
         this(type, "");
@@ -47,6 +49,7 @@ public abstract class Tag<T> implements Comparable<Tag<?>> {
     /**
      * Creates the tag with the specified name.
      *
+     * @param type type of the tag
      * @param name The name.
      */
     public Tag(TagType type, String name) {

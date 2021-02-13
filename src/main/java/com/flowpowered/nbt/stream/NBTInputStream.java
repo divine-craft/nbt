@@ -34,8 +34,9 @@ import java.util.zip.GZIPInputStream;
 import com.flowpowered.nbt.*;
 
 /**
- * This class reads NBT, or Named Binary Tag streams, and produces an object graph of subclasses of the {@link Tag} object. <p /> The NBT format was created by Markus Persson, and the specification
- * may be found at <a href="https://flowpowered.com/nbt/spec.txt"> https://flowpowered.com/nbt/spec.txt</a>.
+ * This class reads NBT, or Named Binary Tag streams, and produces an object graph of subclasses of the {@link Tag} object.
+ * <p>The NBT format was created by Markus Persson, and the specification
+ * may be found at <a href="https://flowpowered.com/nbt/spec.txt"> https://flowpowered.com/nbt/spec.txt</a>.</p>
  */
 public final class NBTInputStream implements Closeable {
     /**
