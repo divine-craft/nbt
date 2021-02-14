@@ -45,6 +45,16 @@ public final class FloatTag extends Tag<@NotNull Float> {
         this.value = value;
     }
 
+    /**
+     * Creates the tag.
+     *
+     * @param value The value.
+     */
+    public FloatTag(float value) {
+        super(TagType.TAG_FLOAT);
+        this.value = value;
+    }
+
     @Override
     public @NotNull Float getValue() {
         return value;

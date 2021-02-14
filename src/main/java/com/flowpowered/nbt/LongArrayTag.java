@@ -44,6 +44,16 @@ public final class LongArrayTag extends Tag<long[]> {
         this.value = value;
     }
 
+    /**
+     * Creates the tag.
+     *
+     * @param value The value.
+     */
+    public LongArrayTag(long @NotNull [] value) {
+        super(TagType.TAG_LONG_ARRAY);
+        this.value = value;
+    }
+
     @Override
     public long @NotNull [] getValue() {
         return value;

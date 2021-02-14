@@ -45,6 +45,16 @@ public final class DoubleTag extends Tag<@NotNull Double> {
         this.value = value;
     }
 
+    /**
+     * Creates the tag.
+     *
+     * @param value The value.
+     */
+    public DoubleTag(double value) {
+        super(TagType.TAG_DOUBLE);
+        this.value = value;
+    }
+
     @Override
     public @NotNull Double getValue() {
         return value;

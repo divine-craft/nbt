@@ -56,6 +56,25 @@ public final class ByteTag extends Tag<@NotNull Byte> {
         this.value = value;
     }
 
+    /**
+     * Creates the tag.<br> Boolean true is stored as 1 and boolean false is stored as 0.
+     *
+     * @param value The value.
+     */
+    public ByteTag(boolean value) {
+        this((byte) (value ? 1 : 0));
+    }
+
+    /**
+     * Creates the tag.
+     *
+     * @param value The value.
+     */
+    public ByteTag(byte value) {
+        super(TagType.TAG_BYTE);
+        this.value = value;
+    }
+
     @Override
     public @NotNull Byte getValue() {
         return value;

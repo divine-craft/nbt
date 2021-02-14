@@ -45,6 +45,16 @@ public final class ShortTag extends Tag<@NotNull Short> {
         this.value = value;
     }
 
+    /**
+     * Creates the tag.
+     *
+     * @param value The value.
+     */
+    public ShortTag(short value) {
+        super(TagType.TAG_SHORT);
+        this.value = value;
+    }
+
     @Override
     public @NotNull Short getValue() {
         return value;

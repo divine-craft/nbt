@@ -48,6 +48,16 @@ public final class ByteArrayTag extends Tag<byte @NotNull []> {
         this.value = value;
     }
 
+    /**
+     * Creates the tag.
+     *
+     * @param value The value.
+     */
+    public ByteArrayTag(byte @NotNull [] value) {
+        super(TagType.TAG_BYTE_ARRAY);
+        this.value = value;
+    }
+
     @Override
     public byte @NotNull [] getValue() {
         return value;

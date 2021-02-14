@@ -56,6 +56,18 @@ public final class ListTag<T extends Tag<?>> extends Tag<@NotNull List<@NotNull 
     }
 
     /**
+     * Creates the tag.
+     *
+     * @param type The type of item in the list.
+     * @param value The value.
+     */
+    public ListTag(@NotNull Class<T> type, @NotNull List<@NotNull T> value) {
+        super(TagType.TAG_LIST);
+        this.type = type;
+        this.value = Collections.unmodifiableList(value);
+    }
+
+    /**
      * Gets the type of item in this list.
      *
      * @return The type of item in this list.

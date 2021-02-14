@@ -45,6 +45,16 @@ public final class IntArrayTag extends Tag<int @NotNull []> {
         this.value = value;
     }
 
+    /**
+     * Creates the tag.
+     *
+     * @param value The value.
+     */
+    public IntArrayTag(int @NotNull [] value) {
+        super(TagType.TAG_INT_ARRAY);
+        this.value = value;
+    }
+
     @Override
     public int @NotNull [] getValue() {
         return value;

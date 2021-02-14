@@ -45,6 +45,16 @@ public final class StringTag extends Tag<@NotNull String> {
         this.value = value;
     }
 
+    /**
+     * Creates the tag.
+     *
+     * @param value The value.
+     */
+    public StringTag(@NotNull String value) {
+        super(TagType.TAG_STRING);
+        this.value = value;
+    }
+
     @Override
     public @NotNull String getValue() {
         return value;

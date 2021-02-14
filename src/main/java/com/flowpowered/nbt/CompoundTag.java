@@ -46,6 +46,17 @@ public final class CompoundTag extends Tag<@NotNull CompoundMap> {
         this.value = value;
     }
 
+    /**
+     * Creates the tag.
+     *
+     * @param value The value.
+     */
+    public CompoundTag(@NotNull CompoundMap value) {
+        super(TagType.TAG_COMPOUND);
+        //this.value = (CompoundMap) Collections.unmodifiableMap(value); This doesn't work anymore, needs a new solution
+        this.value = value;
+    }
+
     @Override
     public @NotNull CompoundMap getValue() {
         return value;

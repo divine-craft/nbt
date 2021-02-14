@@ -45,6 +45,16 @@ public final class LongTag extends Tag<@NotNull Long> {
         this.value = value;
     }
 
+    /**
+     * Creates the tag.
+     *
+     * @param value The value.
+     */
+    public LongTag(long value) {
+        super(TagType.TAG_LONG);
+        this.value = value;
+    }
+
     @Override
     public @NotNull Long getValue() {
         return value;

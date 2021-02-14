@@ -45,6 +45,16 @@ public final class IntTag extends Tag<@NotNull Integer> {
         this.value = value;
     }
 
+    /**
+     * Creates the tag.
+     *
+     * @param value The value.
+     */
+    public IntTag(int value) {
+        super(TagType.TAG_INT);
+        this.value = value;
+    }
+
     @Override
     public @NotNull Integer getValue() {
         return value;
