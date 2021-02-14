@@ -85,7 +85,7 @@ public final class ListTag<T extends Tag<?>> extends Tag<@NotNull List<@NotNull 
     public @NotNull String toString() {
         String name = getName();
         String append = "";
-        if (name != null && !name.equals("")) {
+        if (name != null && !name.isEmpty()) {
             append = "(\"" + this.getName() + "\")";
         }
 

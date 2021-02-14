@@ -25,10 +25,15 @@ package com.flowpowered.nbt;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.regex.Pattern;
+
 /**
  * The {@code TAG_Compound} tag.
  */
 public final class CompoundTag extends Tag<@NotNull CompoundMap> {
+
+    private static final @NotNull Pattern NEW_LINE_MATCHER = Pattern.compile("\r\n");
+
     /**
      * The value.
      */
@@ -66,14 +71,14 @@ public final class CompoundTag extends Tag<@NotNull CompoundMap> {
     public @NotNull String toString() {
         String name = getName();
         String append = "";
-        if (name != null && !name.equals("")) {
+        if (name != null && !name.isEmpty()) {
             append = "(\"" + this.getName() + "\")";
         }
 
         StringBuilder bldr = new StringBuilder();
         bldr.append("TAG_Compound").append(append).append(": ").append(value.size()).append(" entries\r\n{\r\n");
-        for (Tag entry : value.values()) {
-            bldr.append("   ").append(entry.toString().replaceAll("\r\n", "\r\n   ")).append("\r\n");
+        for (Tag<?> entry : value.values()) {
+            bldr.append("   ").append(NEW_LINE_MATCHER.matcher(entry.toString()).replaceAll("\r\n   ")).append("\r\n");
         }
         bldr.append("}");
         return bldr.toString();

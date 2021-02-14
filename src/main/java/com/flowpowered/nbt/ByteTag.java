@@ -88,7 +88,7 @@ public final class ByteTag extends Tag<@NotNull Byte> {
     public @NotNull String toString() {
         String name = getName();
         String append = "";
-        if (name != null && !name.equals("")) {
+        if (name != null && !name.isEmpty()) {
             append = "(\"" + this.getName() + "\")";
         }
         return "TAG_Byte" + append + ": " + value;

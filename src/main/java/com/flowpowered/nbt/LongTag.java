@@ -64,7 +64,7 @@ public final class LongTag extends Tag<@NotNull Long> {
     public @NotNull String toString() {
         String name = getName();
         String append = "";
-        if (name != null && !name.equals("")) {
+        if (name != null && !name.isEmpty()) {
             append = "(\"" + this.getName() + "\")";
         }
         return "TAG_Long" + append + ": " + value;

@@ -72,7 +72,7 @@ public final class LongArrayTag extends Tag<long[]> {
 
         String name = getName();
         String append = "";
-        if (name != null && !name.equals("")) {
+        if (name != null && !name.isEmpty()) {
             append = "(\"" + this.getName() + "\")";
         }
         return "TAG_Long_Array" + append + ": " + hex.toString();
