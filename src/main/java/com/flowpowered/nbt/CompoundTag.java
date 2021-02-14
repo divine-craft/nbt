@@ -23,14 +23,16 @@
  */
 package com.flowpowered.nbt;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * The {@code TAG_Compound} tag.
  */
-public final class CompoundTag extends Tag<CompoundMap> {
+public final class CompoundTag extends Tag<@NotNull CompoundMap> {
     /**
      * The value.
      */
-    private final CompoundMap value;
+    private final @NotNull CompoundMap value;
 
     /**
      * Creates the tag.
@@ -38,19 +40,19 @@ public final class CompoundTag extends Tag<CompoundMap> {
      * @param name The name.
      * @param value The value.
      */
-    public CompoundTag(String name, CompoundMap value) {
+    public CompoundTag(String name, @NotNull CompoundMap value) {
         super(TagType.TAG_COMPOUND, name);
         //this.value = (CompoundMap) Collections.unmodifiableMap(value); This doesn't work anymore, needs a new solution
         this.value = value;
     }
 
     @Override
-    public CompoundMap getValue() {
+    public @NotNull CompoundMap getValue() {
         return value;
     }
 
     @Override
-    public String toString() {
+    public @NotNull String toString() {
         String name = getName();
         String append = "";
         if (name != null && !name.equals("")) {
@@ -66,8 +68,7 @@ public final class CompoundTag extends Tag<CompoundMap> {
         return bldr.toString();
     }
 
-    public CompoundTag clone() {
-        CompoundMap map = new CompoundMap(value);
-        return new CompoundTag(getName(), map);
+    public @NotNull CompoundTag clone() {
+        return new CompoundTag(getName(), new CompoundMap(value));
     }
 }

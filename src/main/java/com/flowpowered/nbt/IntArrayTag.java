@@ -23,13 +23,16 @@
  */
 package com.flowpowered.nbt;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import java.util.Arrays;
 
-public final class IntArrayTag extends Tag<int[]> {
+public final class IntArrayTag extends Tag<int @NotNull []> {
     /**
      * The value.
      */
-    private final int[] value;
+    private final @NotNull int[] value;
 
     /**
      * Creates the tag.
@@ -37,18 +40,18 @@ public final class IntArrayTag extends Tag<int[]> {
      * @param name The name.
      * @param value The value.
      */
-    public IntArrayTag(String name, int[] value) {
+    public IntArrayTag(String name, int @NotNull [] value) {
         super(TagType.TAG_INT_ARRAY, name);
         this.value = value;
     }
 
     @Override
-    public int[] getValue() {
+    public int @NotNull [] getValue() {
         return value;
     }
 
     @Override
-    public String toString() {
+    public @NotNull String toString() {
         StringBuilder hex = new StringBuilder();
         for (int s : value) {
             String hexDigits = Integer.toHexString(s).toUpperCase();
@@ -66,10 +69,8 @@ public final class IntArrayTag extends Tag<int[]> {
         return "TAG_Int_Array" + append + ": " + hex.toString();
     }
 
-    public IntArrayTag clone() {
-        int[] clonedArray = cloneArray(value);
-
-        return new IntArrayTag(getName(), clonedArray);
+    public @NotNull IntArrayTag clone() {
+        return new IntArrayTag(getName(), value.clone());
     }
 
     @Override
@@ -80,16 +81,5 @@ public final class IntArrayTag extends Tag<int[]> {
 
         IntArrayTag tag = (IntArrayTag) other;
         return Arrays.equals(value, tag.value) && getName().equals(tag.getName());
-    }
-
-    private static int[] cloneArray(int[] intArray) {
-        if (intArray == null) {
-            return null;
-        } else {
-            int length = intArray.length;
-            int[] newArray = new int[length];
-            System.arraycopy(intArray, 0, newArray, 0, length);
-            return newArray;
-        }
     }
 }

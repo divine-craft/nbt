@@ -23,10 +23,13 @@
  */
 package com.flowpowered.nbt;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 /**
  * The {@code TAG_End} tag.
  */
-public final class EndTag extends Tag<Object> {
+public final class EndTag extends Tag<Void> {
     /**
      * Creates the tag.
      */
@@ -35,16 +38,16 @@ public final class EndTag extends Tag<Object> {
     }
 
     @Override
-    public Object getValue() {
+    public @Nullable Void getValue() {
         return null;
     }
 
     @Override
-    public String toString() {
+    public @NotNull String toString() {
         return "TAG_End";
     }
 
-    public EndTag clone() {
+    public @NotNull EndTag clone() {
         return new EndTag();
     }
 }

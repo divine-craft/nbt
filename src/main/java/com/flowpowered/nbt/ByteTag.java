@@ -23,10 +23,13 @@
  */
 package com.flowpowered.nbt;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 /**
  * The {@code TAG_Byte} tag.
  */
-public final class ByteTag extends Tag<Byte> {
+public final class ByteTag extends Tag<@NotNull Byte> {
     /**
      * The value.
      */
@@ -54,7 +57,7 @@ public final class ByteTag extends Tag<Byte> {
     }
 
     @Override
-    public Byte getValue() {
+    public @NotNull Byte getValue() {
         return value;
     }
 
@@ -63,7 +66,7 @@ public final class ByteTag extends Tag<Byte> {
     }
 
     @Override
-    public String toString() {
+    public @NotNull String toString() {
         String name = getName();
         String append = "";
         if (name != null && !name.equals("")) {
@@ -72,19 +75,15 @@ public final class ByteTag extends Tag<Byte> {
         return "TAG_Byte" + append + ": " + value;
     }
 
-    public ByteTag clone() {
+    public @NotNull ByteTag clone() {
         return new ByteTag(getName(), value);
     }
 
-    public static Boolean getBooleanValue(Tag<?> t) {
+    public static @Nullable Boolean getBooleanValue(@Nullable Tag<?> t) {
         if (t == null) {
             return null;
         }
-        try {
-            ByteTag byteTag = (ByteTag) t;
-            return byteTag.getBooleanValue();
-        } catch (ClassCastException e) {
-            return null;
-        }
+        if (t.getType() == TagType.TAG_BYTE) return ((ByteTag) t).getBooleanValue();
+        return null;
     }
 }

@@ -23,10 +23,12 @@
  */
 package com.flowpowered.nbt;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * The {@code TAG_Long} tag.
  */
-public final class LongTag extends Tag<Long> {
+public final class LongTag extends Tag<@NotNull Long> {
     /**
      * The value.
      */
@@ -44,12 +46,12 @@ public final class LongTag extends Tag<Long> {
     }
 
     @Override
-    public Long getValue() {
+    public @NotNull Long getValue() {
         return value;
     }
 
     @Override
-    public String toString() {
+    public @NotNull String toString() {
         String name = getName();
         String append = "";
         if (name != null && !name.equals("")) {
@@ -58,7 +60,7 @@ public final class LongTag extends Tag<Long> {
         return "TAG_Long" + append + ": " + value;
     }
 
-    public LongTag clone() {
+    public @NotNull LongTag clone() {
         return new LongTag(getName(), value);
     }
 }

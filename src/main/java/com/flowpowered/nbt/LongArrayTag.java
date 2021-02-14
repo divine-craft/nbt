@@ -23,13 +23,15 @@
  */
 package com.flowpowered.nbt;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Arrays;
 
 public final class LongArrayTag extends Tag<long[]> {
     /**
      * The value.
      */
-    private final long[] value;
+    private final long @NotNull [] value;
 
     /**
      * Creates the tag.
@@ -37,18 +39,18 @@ public final class LongArrayTag extends Tag<long[]> {
      * @param name The name.
      * @param value The value.
      */
-    public LongArrayTag(String name, long[] value) {
+    public LongArrayTag(String name, long @NotNull [] value) {
         super(TagType.TAG_LONG_ARRAY, name);
         this.value = value;
     }
 
     @Override
-    public long[] getValue() {
+    public long @NotNull [] getValue() {
         return value;
     }
 
     @Override
-    public String toString() {
+    public @NotNull String toString() {
         StringBuilder hex = new StringBuilder();
         for (long s : value) {
             String hexDigits = Long.toHexString(s).toUpperCase();
@@ -66,10 +68,8 @@ public final class LongArrayTag extends Tag<long[]> {
         return "TAG_Long_Array" + append + ": " + hex.toString();
     }
 
-    public LongArrayTag clone() {
-        long[] clonedArray = cloneArray(value);
-
-        return new LongArrayTag(getName(), clonedArray);
+    public @NotNull LongArrayTag clone() {
+        return new LongArrayTag(getName(), value.clone());
     }
 
     @Override
@@ -80,16 +80,5 @@ public final class LongArrayTag extends Tag<long[]> {
 
         LongArrayTag tag = (LongArrayTag) other;
         return Arrays.equals(value, tag.value) && getName().equals(tag.getName());
-    }
-
-    private static long[] cloneArray(long[] intArray) {
-        if (intArray == null) {
-            return null;
-        } else {
-            int length = intArray.length;
-            long[] newArray = new long[length];
-            System.arraycopy(intArray, 0, newArray, 0, length);
-            return newArray;
-        }
     }
 }

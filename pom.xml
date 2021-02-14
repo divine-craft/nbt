@@ -108,6 +108,13 @@
 
     <!-- Project dependencies -->
     <dependencies>
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>20.1.0</version>
+            <scope>provided</scope>
+            <optional>true</optional>
+        </dependency>
         <!-- Testing only -->
         <dependency>
             <groupId>junit</groupId>

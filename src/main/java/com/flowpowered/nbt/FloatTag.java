@@ -23,10 +23,12 @@
  */
 package com.flowpowered.nbt;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * The {@code TAG_Float} tag.
  */
-public final class FloatTag extends Tag<Float> {
+public final class FloatTag extends Tag<@NotNull Float> {
     /**
      * The value.
      */
@@ -44,12 +46,12 @@ public final class FloatTag extends Tag<Float> {
     }
 
     @Override
-    public Float getValue() {
+    public @NotNull Float getValue() {
         return value;
     }
 
     @Override
-    public String toString() {
+    public @NotNull String toString() {
         String name = getName();
         String append = "";
         if (name != null && !name.equals("")) {
@@ -58,7 +60,7 @@ public final class FloatTag extends Tag<Float> {
         return "TAG_Float" + append + ": " + value;
     }
 
-    public FloatTag clone() {
+    public @NotNull FloatTag clone() {
         return new FloatTag(getName(), value);
     }
 }

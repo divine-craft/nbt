@@ -23,16 +23,19 @@
  */
 package com.flowpowered.nbt;
 
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 import java.util.Arrays;
 
 /**
  * The {@code TAG_Byte_Array} tag.
  */
-public final class ByteArrayTag extends Tag<byte[]> {
+public final class ByteArrayTag extends Tag<byte @NotNull []> {
     /**
      * The value.
      */
-    private final byte[] value;
+    private final byte @NotNull [] value;
 
     /**
      * Creates the tag.
@@ -40,18 +43,18 @@ public final class ByteArrayTag extends Tag<byte[]> {
      * @param name The name.
      * @param value The value.
      */
-    public ByteArrayTag(String name, byte[] value) {
+    public ByteArrayTag(String name, byte @NotNull [] value) {
         super(TagType.TAG_BYTE_ARRAY, name);
         this.value = value;
     }
 
     @Override
-    public byte[] getValue() {
+    public byte @NotNull [] getValue() {
         return value;
     }
 
     @Override
-    public String toString() {
+    public @NotNull String toString() {
         StringBuilder hex = new StringBuilder();
         for (byte b : value) {
             String hexDigits = Integer.toHexString(b).toUpperCase();
@@ -69,10 +72,8 @@ public final class ByteArrayTag extends Tag<byte[]> {
         return "TAG_Byte_Array" + append + ": " + hex.toString();
     }
 
-    public ByteArrayTag clone() {
-        byte[] clonedArray = cloneArray(value);
-
-        return new ByteArrayTag(getName(), clonedArray);
+    public @NotNull ByteArrayTag clone() {
+        return new ByteArrayTag(getName(), value.clone());
     }
 
     @Override
@@ -83,16 +84,5 @@ public final class ByteArrayTag extends Tag<byte[]> {
 
         ByteArrayTag tag = (ByteArrayTag) other;
         return Arrays.equals(value, tag.value) && getName().equals(tag.getName());
-    }
-
-    private byte[] cloneArray(byte[] byteArray) {
-        if (byteArray == null) {
-            return null;
-        } else {
-            int length = byteArray.length;
-            byte[] newArray = new byte[length];
-            System.arraycopy(byteArray, 0, newArray, 0, length);
-            return newArray;
-        }
     }
 }

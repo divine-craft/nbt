@@ -23,6 +23,8 @@
  */
 package com.flowpowered.nbt;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -30,15 +32,15 @@ import java.util.List;
 /**
  * The {@code TAG_List} tag.
  */
-public final class ListTag<T extends Tag<?>> extends Tag<List<T>> {
+public final class ListTag<T extends Tag<?>> extends Tag<@NotNull List<@NotNull T>> {
     /**
      * The type of entries within this list.
      */
-    private final Class<T> type;
+    private final @NotNull Class<T> type;
     /**
      * The value.
      */
-    private final List<T> value;
+    private final @NotNull List<@NotNull T> value;
 
     /**
      * Creates the tag.
@@ -47,7 +49,7 @@ public final class ListTag<T extends Tag<?>> extends Tag<List<T>> {
      * @param type The type of item in the list.
      * @param value The value.
      */
-    public ListTag(String name, Class<T> type, List<T> value) {
+    public ListTag(String name, @NotNull Class<T> type, @NotNull List<@NotNull T> value) {
         super(TagType.TAG_LIST, name);
         this.type = type;
         this.value = Collections.unmodifiableList(value);
@@ -58,17 +60,17 @@ public final class ListTag<T extends Tag<?>> extends Tag<List<T>> {
      *
      * @return The type of item in this list.
      */
-    public Class<T> getElementType() {
+    public @NotNull Class<T> getElementType() {
         return type;
     }
 
     @Override
-    public List<T> getValue() {
+    public @NotNull List<@NotNull T> getValue() {
         return value;
     }
 
     @Override
-    public String toString() {
+    public @NotNull String toString() {
         String name = getName();
         String append = "";
         if (name != null && !name.equals("")) {
@@ -85,7 +87,7 @@ public final class ListTag<T extends Tag<?>> extends Tag<List<T>> {
     }
 
     @SuppressWarnings ("unchecked")
-    public ListTag<T> clone() {
+    public @NotNull ListTag<T> clone() {
         List<T> newList = new ArrayList<T>();
 
         for (T v : value) {

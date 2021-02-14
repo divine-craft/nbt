@@ -23,14 +23,16 @@
  */
 package com.flowpowered.nbt;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * The {@code TAG_String} tag.
  */
-public final class StringTag extends Tag<String> {
+public final class StringTag extends Tag<@NotNull String> {
     /**
      * The value.
      */
-    private final String value;
+    private final @NotNull String value;
 
     /**
      * Creates the tag.
@@ -38,18 +40,18 @@ public final class StringTag extends Tag<String> {
      * @param name The name.
      * @param value The value.
      */
-    public StringTag(String name, String value) {
+    public StringTag(String name, @NotNull String value) {
         super(TagType.TAG_STRING, name);
         this.value = value;
     }
 
     @Override
-    public String getValue() {
+    public @NotNull String getValue() {
         return value;
     }
 
     @Override
-    public String toString() {
+    public @NotNull String toString() {
         String name = getName();
         String append = "";
         if (name != null && !name.equals("")) {
@@ -58,7 +60,7 @@ public final class StringTag extends Tag<String> {
         return "TAG_String" + append + ": " + value;
     }
 
-    public StringTag clone() {
+    public @NotNull StringTag clone() {
         return new StringTag(getName(), value);
     }
 }

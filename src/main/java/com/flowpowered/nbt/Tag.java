@@ -23,6 +23,8 @@
  */
 package com.flowpowered.nbt;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -32,17 +34,21 @@ import java.util.Map.Entry;
  */
 public abstract class Tag<T> implements Comparable<Tag<?>> {
     /**
+     * The type of this tag.
+     */
+    private final @NotNull TagType type;
+
+    /**
      * The name of this tag.
      */
     private final String name;
-    private final TagType type;
 
     /**
      * Creates the tag with no name.
      *
      * @param type type of the tag
      */
-    public Tag(TagType type) {
+    public Tag(@NotNull TagType type) {
         this(type, "");
     }
 
@@ -52,9 +58,18 @@ public abstract class Tag<T> implements Comparable<Tag<?>> {
      * @param type type of the tag
      * @param name The name.
      */
-    public Tag(TagType type, String name) {
-        this.name = name;
+    public Tag(@NotNull TagType type, String name) {
         this.type = type;
+        this.name = name;
+    }
+
+    /**
+     * Returns the type of this tag
+     *
+     * @return The type of this tag.
+     */
+    public @NotNull TagType getType() {
+        return type;
     }
 
     /**
@@ -64,15 +79,6 @@ public abstract class Tag<T> implements Comparable<Tag<?>> {
      */
     public final String getName() {
         return name;
-    }
-
-    /**
-     * Returns the type of this tag
-     *
-     * @return The type of this tag.
-     */
-    public TagType getType() {
-        return type;
     }
 
     /**
@@ -127,5 +133,5 @@ public abstract class Tag<T> implements Comparable<Tag<?>> {
      *
      * @return the clone
      */
-    public abstract Tag<T> clone();
+    public abstract @NotNull Tag<T> clone();
 }

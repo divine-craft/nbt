@@ -23,10 +23,12 @@
  */
 package com.flowpowered.nbt;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * The {@code TAG_Double} tag.
  */
-public final class DoubleTag extends Tag<Double> {
+public final class DoubleTag extends Tag<@NotNull Double> {
     /**
      * The value.
      */
@@ -44,12 +46,12 @@ public final class DoubleTag extends Tag<Double> {
     }
 
     @Override
-    public Double getValue() {
+    public @NotNull Double getValue() {
         return value;
     }
 
     @Override
-    public String toString() {
+    public @NotNull String toString() {
         String name = getName();
         String append = "";
         if (name != null && !name.equals("")) {
@@ -58,7 +60,7 @@ public final class DoubleTag extends Tag<Double> {
         return "TAG_Double" + append + ": " + value;
     }
 
-    public DoubleTag clone() {
+    public @NotNull DoubleTag clone() {
         return new DoubleTag(getName(), value);
     }
 }

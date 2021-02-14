@@ -23,10 +23,12 @@
  */
 package com.flowpowered.nbt;
 
+import org.jetbrains.annotations.NotNull;
+
 /**
  * The {@code TAG_Short} tag.
  */
-public final class ShortTag extends Tag<Short> {
+public final class ShortTag extends Tag<@NotNull Short> {
     /**
      * The value.
      */
@@ -44,12 +46,12 @@ public final class ShortTag extends Tag<Short> {
     }
 
     @Override
-    public Short getValue() {
+    public @NotNull Short getValue() {
         return value;
     }
 
     @Override
-    public String toString() {
+    public @NotNull String toString() {
         String name = getName();
         String append = "";
         if (name != null && !name.equals("")) {
@@ -58,7 +60,7 @@ public final class ShortTag extends Tag<Short> {
         return "TAG_Short" + append + ": " + value;
     }
 
-    public ShortTag clone() {
+    public @NotNull ShortTag clone() {
         return new ShortTag(getName(), value);
     }
 }

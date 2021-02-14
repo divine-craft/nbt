@@ -27,6 +27,6 @@ import com.flowpowered.nbt.Tag;
 
 public class InvalidTagException extends Exception {
     public InvalidTagException(Tag t) {
-        System.out.println("Invalid tag: " + t.toString() + " encountered!");
+        super("Invalid tag: " + t.toString() + " encountered!");
     }
 }
